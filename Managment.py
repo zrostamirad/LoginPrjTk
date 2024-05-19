@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk, messagebox
 import cls
 from sqlalchemy import or_
+import os
 
 
 class App(Frame):
@@ -25,6 +26,7 @@ class App(Frame):
         # Images
         self.imgsrch = PhotoImage(file="img/srch.png")
         self.imgclose = PhotoImage(file="img/close.png")
+        self.imgexit = PhotoImage(file="img/exit.png")
 
         # var string
         self.varName = StringVar()
@@ -116,6 +118,8 @@ class App(Frame):
         self.btnclosefrm = Button(self.frmSearch, text="*", image=self.imgclose, width=18, height=18,
                                   command=self.ClickCloseSearch)
         self.btnclosefrm.place(x=479, y=8)
+        self.btnexit=Button(self.master,text="*",image=self.imgexit, command=self.Exit)
+        self.btnexit.place(x=750,y=12)
 
     #Event
     def GetComboVal(self):
@@ -382,6 +386,10 @@ class App(Frame):
             self.ClearTable()
             self.LoadTable(self.QueryAll())
 
+    def Exit(self):
+        messagebox.showinfo("", "خدانگهدار")
+        self.master.destroy()  # بستن فايل
+        os.system(f"python main.py")  # انتقال
 
 if __name__ == "__main__":
     screen = Tk()

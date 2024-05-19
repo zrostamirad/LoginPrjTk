@@ -45,7 +45,7 @@ class App(Frame):
             else:
                 user = cls.session.query(cls.userpass).filter_by(username=self.TxtUserName.get(), password=self.TxtPassword.get()).first()
                 if user:
-                    self.message=" خوش آمدي . به صفحه مدیریت منتقل میشی"+user.user.name +" "+ user.user.family
+                    self.message=" خوش آمدي . به صفحه مدیریت منتقل میشی "+user.user.name +" "+ user.user.family
                     messagebox.showinfo("خوش آمديد", self.message)
                     self.master.destroy()# بستن فايل
                     os.system(f"python Managment.py") #انتقال
